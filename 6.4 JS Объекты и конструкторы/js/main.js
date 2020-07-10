@@ -20,24 +20,33 @@
      this.regDate = new regDate().toLocaleString();
      };
 
-function UserList () {
-    this.users =[];
-    this.add = function(user) {
+function registration () {
+    var userlist = new UserList();
+    var fullName;
+    do {
+        fullName = prompt ('Введите через пробел имя и фамилию:');
+        if (fullName != null) {
+            var str = fullName.trimRight();
+            str = fullName.trimLeft();
+            var newuserMassive = FullName.split(' ');
+            var user = new User (newuserMassive[0], newuserMassive[1]);
 
-    };
-    this.getAllUsers = function() {
-};
-};
+            if (newuserMassive.length == 2 && str.search(' ') != -1) {
+                userlist.push(user);
+            } else {
+                alert('Ошибка: Пользователь не внесен в базу данных.')
+            }
+        } else {
+            userlist.getFullUsers = function () {
+               return this.user.firstName + ' ' + this.lastName + ' ' + this.user.regDate
+            }
+        };
+        }while (fullName != null);
+    }
+ 
+registration ();
 
-var user = new User (prompt ('Введите через пробел имя и фамилию:'));
-if (!user) {
-do {
-    alert("Оставлять строку пустой, вводить буквы или другие символы - запрещено");
- var user = new User (prompt ('Введите через пробел имя и фамилию:'));
-} while (user != null);
-};
+ console.log(userlist.getFullUsers());
 
 
-user.split // - получить имя и фамилию при помощи .split
-
-//проверить на дублирование пользователей
+    // getFullUsers при нажатии на отмену, должен выводить весь список в console.log или на странице :)
