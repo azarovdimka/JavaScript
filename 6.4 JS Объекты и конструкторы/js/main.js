@@ -14,25 +14,20 @@
 
  'use strict'
 
- function user (firstName, lastName) {
+ function User (firstName, lastName) {
      this.firstName = firstName;
      this.lastName = lastName;
-     this.regDate = function() {
-         return i;
-     }
- };
+     this.regDate = new regDate().toLocaleString();
+     };
 
 function UserList () {
-    this.
-    this.getAllUsers = function () {
+    this.users =[];
+    this.add = function(user) {
 
-    }
+    };
+    this.getAllUsers = function() {
 };
-
-userList = [
-    users.user = {}
-];
-
+};
 
 var user = new User (prompt ('Введите через пробел имя и фамилию:'));
 if (!user) {
@@ -42,4 +37,7 @@ do {
 } while (user != null);
 };
 
-User.add(user)
+
+user.split // - получить имя и фамилию при помощи .split
+
+//проверить на дублирование пользователей
