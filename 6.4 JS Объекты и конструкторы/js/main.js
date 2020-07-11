@@ -20,7 +20,18 @@
      this.regDate = new regDate().toLocaleString();
      };
 
-function registration () {
+function UserList() {
+    this.userUsers = [];
+    this.add = function(user) {
+        this.userUsers.push(user);
+    };
+    this.getFullUsers = function() {
+        var str = '';
+        console.log(this.userUsers);
+    }
+}
+
+function registration () {  
     var userlist = new UserList();
     var fullName;
     do {
@@ -28,7 +39,7 @@ function registration () {
         if (fullName != null) {
             var str = fullName.trimRight();
             str = fullName.trimLeft();
-            var newuserMassive = FullName.split(' ');
+            var newuserMassive = fullName.split(' ');
             var user = new User (newuserMassive[0], newuserMassive[1]);
 
             if (newuserMassive.length == 2 && str.search(' ') != -1) {
@@ -37,16 +48,9 @@ function registration () {
                 alert('Ошибка: Пользователь не внесен в базу данных.')
             }
         } else {
-            userlist.getFullUsers = function () {
-               return this.user.firstName + ' ' + this.lastName + ' ' + this.user.regDate
-            }
+            userlist.getFullUsers()
         };
         }while (fullName != null);
     }
  
 registration ();
-
- console.log(userlist.getFullUsers());
-
-
-    // getFullUsers при нажатии на отмену, должен выводить весь список в console.log или на странице :)
