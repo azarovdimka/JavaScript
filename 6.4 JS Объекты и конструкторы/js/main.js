@@ -13,44 +13,45 @@
 // 6. После нажатия «Отмена» выведите на экран (в консоль или при помощи alert) список всех пользователей с именами и датами регистрации (используйте для этого метод getAllUsers).
 
  'use strict'
-
- function User (firstName, lastName) {
+                                                        // я как понял этот "детский сад" (function User) из урока вообще не нужен?
+ function User (firstName, lastName) {                  //функция-конструктор для внесения пользователя в объект?
      this.firstName = firstName;
      this.lastName = lastName;
-     this.regDate = new regDate().toLocaleString();
+     this.regDate = new regDate().toLocaleString();     //вызов функции из соседнего js-файла для сообщения программе текущей даты и времени
      };
 
-function UserList() {
-    this.userUsers = [];
-    this.add = function(user) {
-        this.userUsers.push(user);
-    };
-    this.getFullUsers = function() {
-        var str = '';
-        console.log(this.userUsers);
+function UserList() {                                    //userList функция-конструктор по созданию массива пользователей
+    this.usersMassive = [];                                 // usersMassive для хранекния объектов пользователей
+    this.add = function(user) {                          //---?? зачем сначала add - добавляет объект в массив?
+        this.usersMassive.push(user);                       // ---?? потом push - добавляет значение в объект?  
+    };                                                   // ---?? в чем отличия usersMassive от UserList? функция UserList выводит список - а usermassive хранит список?
+    this.getAllUsers = function() {
+        let str = '';                                    // зачем в переменной str пробел?
+        console.log(this.usersMassive);                  // эта строка не выводит в консоль ключ-значение каждого объекта?
     }
 }
 
 function registration () {  
-    var userlist = new UserList();
-    var fullName;
+    let userlist = new UserList();                       // создали новый массив с новым объектом?
+    let fullName;
+    }
     do {
-        fullName = prompt ('Введите через пробел имя и фамилию:');
+        fullName = prompt ('Введите через пробел имя и фамилию:');  // почему мы здесь вводим сразу полное имя, а добавляется в массив отдельно user (стр. 25)
         if (fullName != null) {
-            var str = fullName.trimRight();
+            let str = fullName.trimRight();
             str = fullName.trimLeft();
-            var newuserMassive = fullName.split(' ');
-            var user = new User (newuserMassive[0], newuserMassive[1]);
+            let newuserMassive = fullName.split(' ');     // зачем создан newuserMassive,  если у нас уже создан массив userUsers (стр. 24)
+            let user = new User (newuserMassive[0], newuserMassive[1]);   // Одна переменная может содержать два значекния? как это?
 
-            if (newuserMassive.length == 2 && str.search(' ') != -1) {
-                userlist.push(user);
+            if (newuserMassive.length == 2) {
+                userlist.add(user);                     
             } else {
                 alert('Ошибка: Пользователь не внесен в базу данных.')
             }
         } else {
-            userlist.getFullUsers()
+            userlist.getAllUsers()         // в противном случае, если нажади клавишу отмена выводит список пользователей
         };
-        }while (fullName != null);
+        }while (fullName != null);         
     }
  
 registration ();
