@@ -52,6 +52,5 @@ function registration () {
             userlist.getAllUsers()         // в противном случае, если нажади клавишу отмена выводит список пользователей
         };
         }while (fullName != null);         
-    }
  
 registration ();
