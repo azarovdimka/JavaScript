@@ -57,7 +57,7 @@ switch (Sec)
     default: fSec=Sec + " секунд";
 }
 
-let i = +Day+" "+fMonth+" "+Year+" года, "+fWeekDay+", "+fHour+" "+fMin+" "+fSec+".";
+let i = Day+" "+fMonth+" "+Year+" года, "+fWeekDay+", "+fHour+" "+fMin+" "+fSec+".";
 
 return i
 }

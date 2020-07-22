@@ -12,45 +12,55 @@
 // 5. Диалог prompt должен повторяться, пока пользователь не нажмет “Отмена”.
 // 6. После нажатия «Отмена» выведите на экран (в консоль или при помощи alert) список всех пользователей с именами и датами регистрации (используйте для этого метод getAllUsers).
 
- 'use strict'
-                                                        // я как понял этот "детский сад" (function User) из урока вообще не нужен?
- function User (firstName, lastName) {                  //функция-конструктор для внесения пользователя в объект?
+/*  'use strict' */
+
+registration ();
+                                                        
+ function User (firstName, lastName) {                 
      this.firstName = firstName;
      this.lastName = lastName;
-     this.regDate = new regDate().toLocaleString();     //вызов функции из соседнего js-файла для сообщения программе текущей даты и времени
+     this.regDate = regDate();    
      };
 
-function UserList() {                                    //userList функция-конструктор по созданию массива пользователей
-    this.usersMassive = [];                                 // usersMassive для хранекния объектов пользователей
-    this.add = function(user) {                          //---?? зачем сначала add - добавляет объект в массив?
-        this.usersMassive.push(user);                       // ---?? потом push - добавляет значение в объект?  
-    };                                                   // ---?? в чем отличия usersMassive от UserList? функция UserList выводит список - а usermassive хранит список?
+function UserList() {                                   
+    this.usersMassive = [];       
+                             
+    this.add = function(user) {                     
+        this.usersMassive.push(user);                 
+    };                                                   
     this.getAllUsers = function() {
-        let str = '';                                    // зачем в переменной str пробел?
-        console.log(this.usersMassive);                  // эта строка не выводит в консоль ключ-значение каждого объекта?
-    }
+        //  console.log(this.usersMassive);                 
+        if (this.usersMassive.length > 0) {
+                    for (i = 0; i <= this.usersMassive.length; i++) {
+                        console.log('Пользователь: ' +
+                            this.usersMassive[i].firstName + ' ' +
+                            this.usersMassive[i].lastName +                      
+                            '. Зарегистирован: ' +
+                            this.usersMassive[i].regDate)
+                    }
+                } else {
+                    console.log('В массиве нет информации о пользователях')
+                }
+            }
 }
 
 function registration () {  
-    let userlist = new UserList();                       // создали новый массив с новым объектом?
+    let userlist = new UserList();                       
     let fullName;
-    }
+    
     do {
-        fullName = prompt ('Введите через пробел имя и фамилию:');  // почему мы здесь вводим сразу полное имя, а добавляется в массив отдельно user (стр. 25)
+        fullName = prompt('Введите через пробел имя и фамилию:'); 
         if (fullName != null) {
-            let str = fullName.trimRight();
-            str = fullName.trimLeft();
-            let newuserMassive = fullName.split(' ');     // зачем создан newuserMassive,  если у нас уже создан массив userUsers (стр. 24)
-            let user = new User (newuserMassive[0], newuserMassive[1]);   // Одна переменная может содержать два значекния? как это?
-
+            let newuserMassive = fullName.trim().split(' ');   
             if (newuserMassive.length == 2) {
+                let user = new User (newuserMassive[0], newuserMassive[1]);   
                 userlist.add(user);                     
             } else {
                 alert('Ошибка: Пользователь не внесен в базу данных.')
-            }
-        } else {
-            userlist.getAllUsers()         // в противном случае, если нажади клавишу отмена выводит список пользователей
-        };
-        }while (fullName != null);         
+                }
+            } 
+        } while (fullName != null);  
+        userlist.getAllUsers(userlist)        
+    }       
  
-registration ();
+
